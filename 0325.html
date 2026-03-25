@@ -7,10 +7,9 @@
   <style>
     body {
       background-color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: 'Times New Roman', Times, serif;
       padding: 30px;
     }
-
     .box {
       width: 100%;
       max-width: 500px;
@@ -21,41 +20,37 @@
       color: #000;
       box-sizing: border-box;
     }
-
-    /* Box 1: Light blue background, red solid border */
+    /* Box 1: Light blue background, red double border using border+outline, no radius */
     .box1 {
       background-color: #ADD8E6;
-      border: 4px solid #E05050;
+      border: 3px solid #E05050;
+      outline: 3px solid #E05050;
+      outline-offset: 3px;
+      border-radius: 0;
     }
-
-    /* Box 2: Yellow background, blue solid rounded border */
+    /* Box 2: Yellow background, blue solid border, rounded */
     .box2 {
       background-color: #FFFF00;
       border: 3px solid #1E90FF;
-      border-radius: 8px;
+      border-radius: 20px;
     }
-
-    /* Box 3: Green background, dark dotted border */
+    /* Box 3: Green background, grey dotted border, no radius */
     .box3 {
       background-color: #3CB371;
-      border: 4px dotted #2E6E4E;
+      border: 5px dotted #7A7A7A;
+      border-radius: 0;
     }
-
     .note {
       color: #E03030;
       font-style: italic;
       font-size: 1rem;
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
   <div class="box box1">Hello World</div>
   <div class="box box2">Hello World</div>
   <div class="box box3">Hello World</div>
-
   <p class="note">* Note colors, backgrounds and borders.</p>
-
 </body>
 </html>
