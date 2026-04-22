@@ -6,7 +6,6 @@
   <title>CSS Image Styling Practice</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: Georgia, serif;
       background: #f5f0eb;
@@ -17,17 +16,6 @@
       min-height: 100vh;
       padding: 40px 20px;
     }
-
-    h1 {
-      font-size: 1.05rem;
-      font-weight: normal;
-      color: #333;
-      margin-bottom: 48px;
-      max-width: 700px;
-      text-align: center;
-      line-height: 1.7;
-    }
-
     .gallery {
       display: flex;
       align-items: center;
@@ -35,16 +23,14 @@
       width: 100%;
       max-width: 960px;
     }
-
     .img-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
     .img-wrapper.side { width: 33%; }
 
-    /* Left: 33% width, border-radius 18px, no distortion */
+    /* Left: no distortion */
     .img-left {
       width: 100%;
       height: 300px;
@@ -66,7 +52,6 @@
       z-index: 2;
       box-shadow: 0 4px 20px rgba(0,0,0,0.22);
     }
-
     .img-center-wrapper img {
       width: 100%;
       height: 100%;
@@ -74,12 +59,19 @@
       display: block;
     }
 
-    /* Right: 33% width, fixed 300px height, WITH distortion */
+    /* Right: same size as left, but vertically stretched */
+    .img-right-wrapper {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
     .img-right {
       width: 100%;
       height: 300px;
       display: block;
-      object-fit: fill;
+      object-fit: cover;
+      transform: scaleY(1.6);
+      transform-origin: center center;
     }
 
     .label {
@@ -92,10 +84,9 @@
   </style>
 </head>
 <body>
-
   <div class="gallery">
 
-    <!-- LEFT: 33% width, border-radius 18px, no distortion -->
+    <!-- LEFT: no distortion -->
     <div class="img-wrapper side">
       <img
         class="img-left"
@@ -103,7 +94,7 @@
         onerror="this.onerror=null; this.src='https://picsum.photos/seed/eiffel-left/400/520';"
         alt="Eiffel Tower"
       />
-      <span class="label">width: 33% | border-radius: 18px | no distortion</span>
+
     </div>
 
     <!-- CENTER: 150px circle -->
@@ -115,21 +106,22 @@
           alt="Nature scenery"
         />
       </div>
-      <span class="label">150×150px | border-radius: 50%</span>
+   
     </div>
 
-    <!-- RIGHT: 33% width, 300px height, with distortion -->
+    <!-- RIGHT: same size, vertical distortion -->
     <div class="img-wrapper side">
-      <img
-        class="img-right"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Eiffel_tower_from_below.jpg/427px-Eiffel_tower_from_below.jpg"
-        onerror="this.onerror=null; this.src='https://picsum.photos/seed/eiffel-right/400/520';"
-        alt="Eiffel Tower distorted"
-      />
-      <span class="label">width: 33% | height: 300px | distortion (object-fit: fill)</span>
+      <div class="img-right-wrapper">
+        <img
+          class="img-right"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Eiffel_tower_from_below.jpg/427px-Eiffel_tower_from_below.jpg"
+          onerror="this.onerror=null; this.src='https://picsum.photos/seed/eiffel-right/400/520';"
+          alt="Eiffel Tower distorted"
+        />
+      </div>
+
     </div>
 
   </div>
-
 </body>
 </html>
