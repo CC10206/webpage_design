@@ -3,73 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Image Styling</title>
+  <title>CSS Image Styling Practice</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
+      font-family: Georgia, serif;
+      background: #f5f0eb;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: #fff;
+      padding: 40px 20px;
     }
 
-    .container {
+    h1 {
+      font-size: 1.05rem;
+      font-weight: normal;
+      color: #333;
+      margin-bottom: 48px;
+      max-width: 700px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .gallery {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 24px;
       width: 100%;
-      padding: 40px;
+      max-width: 960px;
     }
 
-    /* 左圖：33% 寬、radius 18px、no distortion */
+    .img-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .img-wrapper.side { width: 33%; }
+
+    /* Left: 33% width, border-radius 18px, no distortion */
     .img-left {
-      width: 33%;
-      height: 300px;
+      width: 100%;
       border-radius: 18px;
-      object-fit: cover;
       display: block;
+      object-fit: cover;
     }
 
-    /* 中圖：圓形 150px、border */
-    .img-circle {
+    /* Center: 150px circle */
+    .img-center-wrapper {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      border: 4px solid #ccc;
-      object-fit: cover;
+      overflow: hidden;
+      border: 6px solid #b0a090;
       flex-shrink: 0;
+      margin: 0 -12px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+    }
+
+    .img-center-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
-    /* 右圖：33% 寬、固定高 300px、distortion 拉伸 */
+    /* Right: 33% width, fixed 300px height, WITH distortion */
     .img-right {
-      width: 33%;
+      width: 100%;
       height: 300px;
-      object-fit: fill;
       display: block;
+      object-fit: fill;
+    }
+
+    .label {
+      font-size: 0.7rem;
+      color: #999;
+      text-align: center;
+      margin-top: 8px;
+      font-family: monospace;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- 左圖：no distortion，原圖是直的(窄高)，cover裁切不變形 -->
-    <img class="img-left"
-         src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=300&h=600"
-         alt="左圖 no distortion">
+  <div class="gallery">
 
-    <!-- 中圖（圓形） -->
-    <img class="img-circle"
-         src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300"
-         alt="圓形圖">
+    <!-- LEFT: 33% width, border-radius 18px, no distortion -->
+    <div class="img-wrapper side">
+      <img
+        class="img-left"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Eiffel_tower_from_below.jpg/427px-Eiffel_tower_from_below.jpg"
+        onerror="this.onerror=null; this.src='https://picsum.photos/seed/eiffel-left/400/520';"
+        alt="Eiffel Tower"
+      />
+      <span class="label">width: 33% | border-radius: 18px | no distortion</span>
+    </div>
 
-    <!-- 右圖：distortion，同一張直圖但強制fill填滿橫向空間，明顯拉寬變形 -->
-    <img class="img-right"
-         src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=300&h=600"
-         alt="右圖 distortion">
+    <!-- CENTER: 150px circle -->
+    <div class="img-wrapper">
+      <div class="img-center-wrapper">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/24701-nature-natural-beauty.jpg/640px-24701-nature-natural-beauty.jpg"
+          onerror="this.onerror=null; this.src='https://picsum.photos/seed/river-valley/300/300';"
+          alt="Nature scenery"
+        />
+      </div>
+      <span class="label">150×150px | border-radius: 50%</span>
+    </div>
+
+    <!-- RIGHT: 33% width, 300px height, with distortion -->
+    <div class="img-wrapper side">
+      <img
+        class="img-right"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Eiffel_tower_from_below.jpg/427px-Eiffel_tower_from_below.jpg"
+        onerror="this.onerror=null; this.src='https://picsum.photos/seed/eiffel-right/400/520';"
+        alt="Eiffel Tower distorted"
+      />
+      <span class="label">width: 33% | height: 300px | distortion (object-fit: fill)</span>
+    </div>
+
   </div>
 
 </body>
