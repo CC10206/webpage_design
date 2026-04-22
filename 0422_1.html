@@ -3,10 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Button Demo</title>
+  <title>查看資訊 Demo</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
   <style>
-    .btn-spec {
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f6f6f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* ── 主容器 496px wide ── */
+    .card {
+      width: 496px;
+      background: #fff;
+      border: 1px solid #ddd;
+      position: relative;
+    }
+
+    /* ── 頂部 header bar ── */
+    .header {
+      background: #f6f6f6;
+      border-bottom: 1px solid #eaeaea;
+      padding: 0 15px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-label {
+      font-size: 13px;
+      color: #2f2f2f;
+    }
+
+    /* ── 查看資訊 / 收起資訊 button (spec: h22 R8) ── */
+    .btn-info {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -20,10 +56,98 @@
       font-weight: 400;
       color: #2f2f2f;
       cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-info:hover {
+      background: #2f2f2f;
+      color: #fff;
+    }
+
+    /* ── 預覽圖區 450×240 ── */
+    .preview-img {
+      width: 450px;
+      height: 240px;
+      margin: 20px 20px 26px 20px;
+      background: #c8b89a url('https://picsum.photos/seed/bridge/450/240') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* ── 展開的資訊欄 ── */
+    .info-panel {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+      border-top: 1px solid #eaeaea;
+    }
+    .info-panel.open {
+      max-height: 200px;
+    }
+
+    .info-row {
+      height: 22px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px 0 26px;
+      font-size: 13px;
+      color: #2f2f2f;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .info-row.green  { background: #7be07b; color: #2f2f2f; }
+    .info-row.white  { background: #ffffff; }
+
+    .info-label {
+      min-width: 70px;
+      color: inherit;
     }
   </style>
 </head>
 <body>
-  <button class="btn-spec">查看資訊</button>
+
+<div class="card">
+
+  <!-- header -->
+  <div class="header">
+    <span class="header-label">預覽</span>
+    <button class="btn-info" id="toggleBtn" onclick="togglePanel()">查看資訊</button>
+  </div>
+
+  <!-- 預覽圖 -->
+  <div class="preview-img"></div>
+
+  <!-- 資訊欄 (預設收起) -->
+  <div class="info-panel" id="infoPanel">
+    <div class="info-row green">
+      <span class="info-label">修改日期：</span>2017/10/12
+    </div>
+    <div class="info-row green">
+      <span class="info-label">類型：</span>JPG
+    </div>
+    <div class="info-row green">
+      <span class="info-label">大小：</span>466.97KB
+    </div>
+    <div class="info-row white">
+      <span class="info-label">路徑：</span>
+      <span style="font-size:11px; color:#707070; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+        \\designcenter.qnap.com.tw\DesignCenter\PM - RD 讀讀人\WEB\Sample
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function togglePanel() {
+    const panel = document.getElementById('infoPanel');
+    const btn   = document.getElementById('toggleBtn');
+    const isOpen = panel.classList.toggle('open');
+    btn.textContent = isOpen ? '收起資訊' : '查看資訊';
+  }
+</script>
+
 </body>
 </html>
