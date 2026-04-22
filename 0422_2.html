@@ -27,6 +27,7 @@
     /* 左圖：33% 寬、radius 18px、no distortion */
     .img-left {
       width: 33%;
+      height: 300px;
       border-radius: 18px;
       object-fit: cover;
       display: block;
@@ -43,7 +44,7 @@
       display: block;
     }
 
-    /* 右圖：33% 寬、固定高 300px、distortion */
+    /* 右圖：33% 寬、固定高 300px、distortion 拉伸 */
     .img-right {
       width: 33%;
       height: 300px;
@@ -55,9 +56,9 @@
 <body>
 
   <div class="container">
-    <!-- 左圖：no distortion -->
+    <!-- 左圖：no distortion，原圖是直的(窄高)，cover裁切不變形 -->
     <img class="img-left"
-         src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=600"
+         src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=300&h=600"
          alt="左圖 no distortion">
 
     <!-- 中圖（圓形） -->
@@ -65,9 +66,9 @@
          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300"
          alt="圓形圖">
 
-    <!-- 右圖：distortion -->
+    <!-- 右圖：distortion，同一張直圖但強制fill填滿橫向空間，明顯拉寬變形 -->
     <img class="img-right"
-         src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=600"
+         src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=300&h=600"
          alt="右圖 distortion">
   </div>
 
