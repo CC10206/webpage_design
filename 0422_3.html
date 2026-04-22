@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #4fc3d7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      font-family: sans-serif;
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      padding: 16px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* --- Section 1: Green header block --- */
+    .block-green {
+      background-color: #8bc34a;
+      border-radius: 6px;
+      height: 120px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    /* --- Section 2: Teal rows (narrow) → teal columns (wide) --- */
+    .teal-section {
+      margin-bottom: 10px;
+    }
+
+    /* Narrow: stacked rows */
+    .teal-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .teal-rows .teal-row {
+      background-color: #00acc1;
+      border-radius: 5px;
+      height: 30px;
+      width: 100%;
+    }
+
+    /* Wide: side-by-side columns */
+    .teal-cols {
+      display: none;
+      gap: 6px;
+    }
+
+    .teal-cols .teal-col {
+      background-color: #00acc1;
+      border-radius: 5px;
+      height: 80px;
+      flex: 1;
+    }
+
+    /* --- Section 3: Gray blocks --- */
+    .gray-section {
+      display: grid;
+      gap: 6px;
+    }
+
+    .gray-block {
+      background-color: #cfd8dc;
+      border-radius: 5px;
+      height: 50px;
+    }
+
+    /* === NARROW layout (<480px): 2 gray columns === */
+    .gray-section {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* === WIDE layout (≥480px): 4 gray columns === */
+    @media (min-width: 480px) {
+      .teal-rows {
+        display: none;
+      }
+
+      .teal-cols {
+        display: flex;
+      }
+
+      .gray-section {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Green header -->
+    <div class="block-green"></div>
+
+    <!-- Teal section: rows on narrow, columns on wide -->
+    <div class="teal-section">
+      <!-- Narrow: stacked rows -->
+      <div class="teal-rows">
+        <div class="teal-row"></div>
+        <div class="teal-row"></div>
+        <div class="teal-row"></div>
+        <div class="teal-row"></div>
+      </div>
+      <!-- Wide: side-by-side columns -->
+      <div class="teal-cols">
+        <div class="teal-col"></div>
+        <div class="teal-col"></div>
+        <div class="teal-col"></div>
+      </div>
+    </div>
+
+    <!-- Gray section: 2 cols on narrow, 4 cols on wide -->
+    <div class="gray-section">
+      <div class="gray-block"></div>
+      <div class="gray-block"></div>
+      <div class="gray-block"></div>
+      <div class="gray-block"></div>
+    </div>
+  </div>
+</body>
+</html>
