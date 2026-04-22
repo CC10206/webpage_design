@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Image Styling</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    /* 左圖：33% 寬、radius 18px、不變形 */
+    .img-left {
+      width: 33%;
+      border-radius: 18px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 中圖：圓形 150px、有 border */
+    .img-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #ccc;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    /* 右圖：33% 寬、固定高 300px、不變形 */
+    .img-right {
+      width: 33%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 左圖 -->
+    <img class="img-left"
+         src="https://picsum.photos/seed/paris1/400/300"
+         alt="左圖">
+
+    <!-- 中圖（圓形） -->
+    <img class="img-circle"
+         src="https://picsum.photos/seed/mountain/300/300"
+         alt="圓形圖">
+
+    <!-- 右圖 -->
+    <img class="img-right"
+         src="https://picsum.photos/seed/paris2/400/300"
+         alt="右圖">
+  </div>
+
+</body>
+</html>
