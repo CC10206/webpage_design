@@ -24,7 +24,7 @@
       padding: 40px;
     }
 
-    /* 左圖：33% 寬、radius 18px、不變形 */
+    /* 左圖：33% 寬、radius 18px、no distortion */
     .img-left {
       width: 33%;
       border-radius: 18px;
@@ -32,7 +32,7 @@
       display: block;
     }
 
-    /* 中圖：圓形 150px、有 border */
+    /* 中圖：圓形 150px、border */
     .img-circle {
       width: 150px;
       height: 150px;
@@ -43,7 +43,7 @@
       display: block;
     }
 
-    /* 右圖：33% 寬、固定高 300px、變形拉伸 */
+    /* 右圖：33% 寬、固定高 300px、distortion */
     .img-right {
       width: 33%;
       height: 300px;
@@ -55,19 +55,19 @@
 <body>
 
   <div class="container">
-    <!-- 左圖：no distortion，裁切填滿 -->
+    <!-- 左圖：no distortion -->
     <img class="img-left"
-         src="https://placehold.co/200x400"
+         src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=600"
          alt="左圖 no distortion">
 
     <!-- 中圖（圓形） -->
     <img class="img-circle"
-         src="https://placehold.co/300x300"
+         src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300"
          alt="圓形圖">
 
-    <!-- 右圖：distortion，拉伸變形 -->
+    <!-- 右圖：distortion -->
     <img class="img-right"
-         src="https://placehold.co/200x400"
+         src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=600"
          alt="右圖 distortion">
   </div>
 
