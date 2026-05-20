@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Calculations</title>
+</head>
+<body>
+    <h1>Circle Calculations Demo</h1>
+    <p>開Console看輸出結果，測試值兩個都是5。</p>
+
+    <script>
+        // 1. 計算圓周長的函數
+        function calcCircumfrence(radius) {
+            var circumference = 2 * Math.PI * radius;
+            console.log("The circumference is " + circumference.toFixed(2));
+        }
+
+        // 2. 計算圓面積的函數
+        function calcArea(radius) {
+            var area = Math.PI * Math.pow(radius, 2);
+            console.log("The area is " + area.toFixed(2));
+        }
+
+        // 測試執行 (以半徑 5 為例)
+        calcCircumfrence(5);
+        calcArea(5);
+    </script>
+</body>
+</html>
